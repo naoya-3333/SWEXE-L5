@@ -1,0 +1,11 @@
+<% @user.each do |user| %>
+    <%= 'ユーザID:' %>
+        <%= user.uid %>
+    <%= '年齢:'%>
+        <%= user.age%>
+    <%= 'パスワード:'%>
+        <%= user.pass%>
+    <%= link_to '削除',"/users/#{user.id}",method: :delete %><br>
+<% end %>
+
+<p><%= link_to 'ユーザ作成','/users/new'%></p>

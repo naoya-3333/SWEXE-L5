@@ -1,0 +1,10 @@
+<%= form_for @user, url:{action: :create} do |f| %>
+    <%= 'ユーザID：' %>
+        <%= f.text_field :uid %><br>
+    <%= 'パスワード：' %>
+        <%= f.password_field :pass %><br>
+    <%= '年齢：' %>
+        <%= f.number_field :age %><br>
+    <%= f.submit '登録' %>
+    
+<% end %>
