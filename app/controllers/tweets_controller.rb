@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   def index
     @tweet = Tweet.all
+    @like = Like.all
   end
   
   def new
@@ -8,12 +9,20 @@ class TweetsController < ApplicationController
   end
   
   def create
+    user = User.find_by(uid: session[:login_uid])
     @tweet = Tweet.create(message: params[:tweet][:message])
-    @tweet.user_id = "1"
+    user.tweets << @tweet
+    @tweet.user = user
     if @tweet.save
-      redirect_to '/tweets/index'
+      redirect_to '/'
     else
         render 'new'
     end
+  end
+  
+  def destroy
+    tweet = Tweet.find(params[:id])
+    tweet.destroy
+    redirect_to '/'
   end
 end
