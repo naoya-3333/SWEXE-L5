@@ -11,7 +11,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.create(message: params[:tweet][:message])
     @tweet.user_id = "1"
     if @tweet.save
-      redirect_to root_path
+      redirect_to '/tweets/index'
     else
         render 'new'
     end

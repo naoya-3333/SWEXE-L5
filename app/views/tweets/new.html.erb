@@ -2,3 +2,9 @@
 <%= f.text_area :message,size:"30x10" %>
 <%= f.submit 'ツイート'  %>
 <% end %>
+
+<% if session[:login_uid] %>
+    <p><%= p "ログイン中です（#{session[:login_uid]}さん）"%></p>
+<% else %>
+    <p>ログインしていません</p>
+<% end %>

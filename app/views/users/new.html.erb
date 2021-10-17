@@ -8,3 +8,9 @@
     <%= f.submit '登録' %>
     
 <% end %>
+
+<% if session[:login_uid] %>
+    <p><%= p "ログイン中です（#{session[:login_uid]}さん）"%></p>
+<% else %>
+    <p>ログインしていません</p>
+<% end %>

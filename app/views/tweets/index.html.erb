@@ -2,4 +2,13 @@
     <%= tweet.message %><br>
 <% end %>
 
-<p><%= link_to 'ツイート','/tweets/new'%></p>
+<% if session[:login_uid] %>
+    <p><%= link_to 'ツイート','/tweets/new'%></p>
+
+    <p><%= link_to 'ログアウト',top_logout_path %></p>
+    <p><%= p "ログイン中です（#{session[:login_uid]}さん）"%></p>
+<% else %>
+    <%= link_to 'ログイン','/top/main' %>
+    
+    <p>ログインしていません</p>
+<% end %>
