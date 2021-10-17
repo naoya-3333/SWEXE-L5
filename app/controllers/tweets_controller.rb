@@ -2,6 +2,7 @@ class TweetsController < ApplicationController
   def index
     @tweet = Tweet.all
     @like = Like.all
+    @user = User.find_by(uid: session[:login_uid])
   end
   
   def new

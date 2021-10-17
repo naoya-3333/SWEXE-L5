@@ -8,8 +8,8 @@ class LikesController < ApplicationController
   
   def destroy
     tweet = Tweet.find(params[:tweet_id])
-    if Like.find_by(tweet_id: tweet.id)
-      user = User.find_by(uid: session[:login_uid])
+    user = User.find_by(uid: session[:login_uid])
+    if Like.find_by(tweet_id: tweet.id,user_id: user.id)
       tweet.likes.find_by(user_id: user.id).destroy
       redirect_to '/'
     else

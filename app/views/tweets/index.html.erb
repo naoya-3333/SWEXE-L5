@@ -1,13 +1,16 @@
 <% @tweet.each do |e| %>
     <%= e.message %>
-    <%= link_to 'いいね', likes_create_path(tweet_id: e.id), method: :post %>
-    <%= link_to 'いいね削除', likes_destroy_path(tweet_id: e.id), method: :delete %>
-    <% if @like.find_by(tweet_id: e.id) %>
-        <%= p '🤍' %>
-    <% else %>
-        <%= p '♡' %>
+    <% if session[:login_uid] %>
+        <%= link_to 'いいね', likes_create_path(tweet_id: e.id), method: :post %>
+        <%= link_to 'いいね削除', likes_destroy_path(tweet_id: e.id), method: :delete %>
+        <% if @like.find_by(tweet_id: e.id,user_id: @user.id) %>
+            <%= p '🤍' %>
+        <% else %>
+            <%= p '♡' %>
+        <%end%>
+        <%= link_to '削除',"/tweets/#{e.id}",method: :delete %>
     <%end%>
-    <%= link_to '削除',"/tweets/#{e.id}",method: :delete %>
+    
     
     <br>
 <% end %>
