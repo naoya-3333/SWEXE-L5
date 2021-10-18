@@ -3,7 +3,7 @@ class LikesController < ApplicationController
     
     tweet = Tweet.find(params[:tweet_id])
     user = User.find_by(uid: session[:login_uid])
-    if Like.find_by(user_id: user.id)
+    if Like.find_by(tweet_id: tweet.id, user_id: user.id)
       redirect_to root_path
     else
       user.like_tweets << tweet
