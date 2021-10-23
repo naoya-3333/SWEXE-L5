@@ -7,8 +7,3 @@
 <% end %>
 <p><%= link_to 'ユーザ一覧',users_path%></p>
 
-<% if session[:login_uid] %>
-    <p><%= p "ログイン中です（#{session[:login_uid]}さん）"%></p>
-<% else %>
-    <p>ログインしていません</p>
-<% end %>

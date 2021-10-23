@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
   end
   
   def create
-    user = User.find_by(uid: session[:login_uid])
+    user = User.find_by(uid: current_user.uid)
     @tweet = Tweet.create(message: params[:tweet][:message])
     user.tweets << @tweet
     @tweet.user = user

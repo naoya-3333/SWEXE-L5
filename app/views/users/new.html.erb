@@ -1,16 +1,12 @@
 <%= form_for @user, url:{action: :create} do |f| %>
     <%= 'ユーザID：' %>
         <%= f.text_field :uid %><br>
-    <%= 'パスワード：' %>
-        <%= f.password_field :pass %><br>
+    <%= f.label :password, 'パスワード' %>
+        <%= f.password_field :password %>
+    <%= f.label :password_confirmation, 'パスワード(確認)' %>
+        <%= f.password_field :password_confirmation %>
     <%= '年齢：' %>
         <%= f.number_field :age %><br>
     <%= f.submit '登録' %>
     
-<% end %>
-
-<% if session[:login_uid] %>
-    <p><%= p "ログイン中です（#{session[:login_uid]}さん）"%></p>
-<% else %>
-    <p>ログインしていません</p>
 <% end %>

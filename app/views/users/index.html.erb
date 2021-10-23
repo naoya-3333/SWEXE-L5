@@ -10,9 +10,3 @@
 
 <p><%= link_to 'ユーザ作成','/users/new'%></p>
 <p><%= link_to 'メイン','/' %></p>
-
-<% if session[:login_uid] %>
-    <p><%= p "ログイン中です（#{session[:login_uid]}さん）"%></p>
-<% else %>
-    <p>ログインしていません</p>
-<% end %>
